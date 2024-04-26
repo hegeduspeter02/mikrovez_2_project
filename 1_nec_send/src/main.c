@@ -14,6 +14,9 @@
 // $[Generated Includes]
 // [Generated Includes]$
 
+//-----------------------------------------------------------------------------
+// Global CONSTANTS
+//-----------------------------------------------------------------------------
 SI_SBIT(signal_out, P2, 3U);
 #define NINE_MS_OF_COUNT 342
 #define IMPULSE_NEEDED 21
@@ -28,6 +31,9 @@ SI_SBIT(signal_out, P2, 3U);
 #define ADDRESS_OUT 0
 #define COMMAND_OUT 0
 
+//-----------------------------------------------------------------------------
+// Global VARIABLES
+//-----------------------------------------------------------------------------
 uint8_t counter = IMPULSE_NEEDED;
 uint8_t data_out[4];
 const uint8_t DATA_OUT_LENGTH = 4;
