@@ -25,7 +25,7 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := nec_implementation
+BUILD_ARTIFACT_NAME := 1_nec_send
 BUILD_ARTIFACT_EXTENSION := omf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
@@ -36,24 +36,24 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 all: main-build
 
 # Main-build Target
-main-build: nec_implementation.omf
+main-build: 1_nec_send.omf
 
 # Tool invocations
-nec_implementation.omf: echo_path $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+1_nec_send.omf: echo_path $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Keil 8051 Linker'
-	LX51 "@nec_implementation.lnp" || $(RC)
+	LX51 "@1_nec_send.lnp" || $(RC)
 	@echo 'Finished building target: $@'
 
 # Change from all upper case to the expected case
-	@-mv "NEC_IMPLEMENTATION.OMF.CRBUILD" "$@"
+	@-mv "1_NEC_SEND.OMF.CRBUILD" "$@"
 
-# Generate hex file: nec_implementation.hex
-	@Ohx51 "nec_implementation.omf" "HEXFILE (nec_implementation.hex)" "H386" 2>&1 >/dev/null
+# Generate hex file: 1_nec_send.hex
+	@Ohx51 "1_nec_send.omf" "HEXFILE (1_nec_send.hex)" "H386" 2>&1 >/dev/null
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS) nec_implementation.omf
+	-$(RM) $(EXECUTABLES)$(OBJS) 1_nec_send.omf
 	-@echo ' '
 
 .PHONY: all clean dependents main-build

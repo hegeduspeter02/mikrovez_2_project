@@ -25,6 +25,8 @@ SI_SBIT(signal_out, P2, 3U);
 #define HIGH 1
 #define LOW 0
 #define BITS_IN_BYTE 8
+#define ADDRESS_OUT 0
+#define COMMAND_OUT 0
 
 uint8_t counter = IMPULSE_NEEDED;
 uint8_t data_out[4];
@@ -145,7 +147,7 @@ void SendSignalOut()
 		}
 	}
 
-	SendPulse(1);
+	SendPulse(1); // sending an END burst pulse
 }
 
 //-----------------------------------------------------------------------------
@@ -160,7 +162,8 @@ int main (void)
   {
     // $[Generated Run-time code]
     // [Generated Run-time code]$
-	  FillDataArray(0, 181);
+
+	  FillDataArray(ADDRESS_OUT, COMMAND_OUT);
 	  SendStartSignal();
 	  SendSignalOut();
   }                             
